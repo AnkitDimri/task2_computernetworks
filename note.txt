@@ -1,0 +1,4 @@
+                                   ||NOTE||
+
+1.Blocking and nonblocking read , write functions are used in TCP server and client.
+2.sendto recvfrom functions are used in UDP client and server.
