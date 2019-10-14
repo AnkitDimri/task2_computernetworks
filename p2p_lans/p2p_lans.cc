@@ -1,31 +1,11 @@
-/* -*- Mode:C++; c-file-style:"gnu"; indent-tabs-mode:nil; -*- */
 /*
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License version 2 as
- * published by the Free Software Foundation;
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
-
- /*
-  * This is the architecture
-  * n0-----n1-----n2
-  *   			|
-						|
-						|
-						n3
-  * L1 -> 5Mbps, 2ms
-  * L2 -> 10Mbps, 5ms
-  * n0 - client, n2 - server
-  *
-  */
+   This is the architecture
+   n0-----n1-----n2
+     			|
+					|
+					|
+					n3
+*/
 
 #include "ns3/netanim-module.h"
 #include "ns3/core-module.h"
@@ -153,20 +133,6 @@ main (int argc, char *argv[])
 	clientApps.Start (Seconds (1.0));
 	clientApps.Stop (Minutes(999999999));
 
-  /*UdpEchoServerHelper echoServer1 (10);
-
-	ApplicationContainer serverApps1 = echoServer1.Install (nodes.Get (3));
-	serverApps1.Start (Seconds (1.0));
-	serverApps1.Stop (Seconds (20000.0));
-
-	UdpEchoClientHelper echoClient1 (interfaces3.GetAddress (1), 10);
-	echoClient1.SetAttribute ("MaxPackets", UintegerValue (200000));
-	echoClient1.SetAttribute ("Interval", TimeValue (Seconds (0.01)));
-	echoClient1.SetAttribute ("PacketSize", UintegerValue (1024));
-
-	ApplicationContainer clientApps1 = echoClient1.Install (nodes.Get (2));
-	clientApps1.Start (Seconds (1.0));
-	clientApps1.Stop (Seconds ());*/
 
 	AnimationInterface anim ("l1q1.xml");
 	anim.SetConstantPosition(nodes.Get(0),0.0,0.0);
