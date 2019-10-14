@@ -1,10 +1,10 @@
 /*
    This is the architecture
    n0-----n1-----n2
-     			|
-					|
-					|
-					n3
+     	  |
+	  |
+	  |
+	  n3
 */
 
 #include "ns3/netanim-module.h"
