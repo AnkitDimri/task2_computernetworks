@@ -92,9 +92,10 @@ FlowID: 2 (UDP 10.1.2.2 / 9 --> 10.1.1.1 / 49153)
   Throughput: 136789bits/s
   Mean{Delay}: 0.020253
   Mean{Jitter}: 0
-Final throughput with (packets received/total time): 134253 bps
-Final throughput with (packets received/total time): 137924 bps
+Final throughput with (packets received/total time): 134253 bps 
+Final throughput with (packets received/total time): 137924 bps 
 Total packets transmitted:40
 Total packets received: 40
 Total packets dropped: 0
 Packet Lost Ratio: 0
+

@@ -89,5 +89,3 @@ Polling of Socket:
 
 Polling of Socket: The poll() API allows the process to wait for an event to
                    occur and to wake up the process when the event occurs.
-
-                   
