@@ -89,3 +89,64 @@ Polling of Socket:
 
 Polling of Socket: The poll() API allows the process to wait for an event to
                    occur and to wake up the process when the event occurs.
+
+The poll() API is part of the Single Unix Specification and the UNIX 95/98
+standard. The poll() API performs the same API as the existing select() API.
+The only difference between these two APIs is the interface provided to
+the caller.
+
+The select() API requires that the application pass in an array of bits in
+which one bit is used to represent each descriptor number. When descriptor
+numbers are very large, it can overflow the 30KB allocated memory size,
+forcing multiple iterations of the process. This overhead can adversely
+affect performance.
+
+The poll() API allows the application to pass an array of structures rather
+than an array of bits. Because each pollfd structure can contain up to 8 bytes,
+the application only needs to pass one structure for each descriptor, even
+if descriptor numbers are very large.
+
+Socket flow of events: Server that uses poll()
+The following calls are used in the example:
+
+The socket() API returns a socket descriptor, which represents an endpoint.
+The statement also identifies that the AF_INET6 (Internet Protocol version 6)
+address family with the TCP transport (SOCK_STREAM) is used for this socket.
+
+The setsockopt() API allows the application to reuse the local address when
+the server is restarted before the required wait time expires.
+
+The ioctl() API sets the socket to be nonblocking. All of the sockets for the
+incoming connections are also nonblocking because they inherit that state
+from the listening socket.
+
+After the socket descriptor is created, the bind() API gets a unique name
+for the socket.
+
+The listen() API call allows the server to accept incoming client connections.
+
+The poll() API allows the process to wait for an event to occur and to wake up
+the process when the event occurs. The poll() API might return one of the
+following values.
+0
+
+Indicates that the process times out. In this example, the timeout is set
+for 3 minutes (in milliseconds).
+-1
+
+Indicates that the process has failed.
+1
+
+Indicates only one descriptor is ready to be processed, which is processed
+only if it is the listening socket.
+1++
+
+Indicates that multiple descriptors are waiting to be processed. The poll()
+API allows simultaneous connection with all descriptors in the queue
+on the listening socket.
+
+The accept() and recv() APIs are completed when the EWOULDBLOCK is returned.
+
+The send() API echoes the data back to the client.
+
+The close() API closes any open socket descriptors.
